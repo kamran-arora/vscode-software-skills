@@ -22,13 +22,16 @@ def simulate_gbm(mu: float, sigma: float, T: float, dt0: float, y0: jax.Array, k
     """
     Simulate a geometric Brownian motion
 
-    **args:**
+    **Arguments:**
     - mu: drift
     - sigma: volatility
     - T: final time
     - dt0: timestep
     - y0: initial condition
     - key: jax.random.key
+
+    **Returns:**
+    - Sample path of a GBM
     """
     args = (mu, sigma)
     ts = jnp.linspace(0.0, T, int(T/dt0)+1)
