@@ -2,3 +2,5 @@
 *.pyc
 *.exe
 *.json
+*.gz
+*.png

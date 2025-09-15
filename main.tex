@@ -1,0 +1,86 @@
+\documentclass{article}
+
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage{mathtools}
+\usepackage{bbm}
+\usepackage{enumerate}
+\usepackage{caption}
+\usepackage{parskip}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{parskip}
+\usepackage{appendix}
+%\usepackage{cmbright}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=violet,
+    citecolor=magenta,
+}
+
+\usepackage{geometry}
+
+\setcounter{tocdepth}{2}
+
+%%%%%%%%%%%%%%
+% MATHS
+%%%%%%%%%%%%%%
+
+% epsilon
+\newcommand{\ve}{\varepsilon}
+
+% auto-size norm
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+% absolute value
+\newcommand\absv[1]{\left\lvert#1\right\rvert}
+% auto-size brackets
+\renewcommand\brack[1]{\left (#1\right)}
+\newcommand\abrack[1]{\left \langle #1 \right \rangle}
+\newcommand\sbrack[1]{\left [ #1 \right ]}
+\newcommand\cbrack[1]{\left \{ #1 \right \}}
+
+% d for a derivative
+\newcommand{\dd}{\mathop{}\!\mathrm{d}}
+% derivative of #1 w.r.t #2
+\newcommand\ddfrac[2]{\frac{\dd #1}{\dd #2}}
+
+% probability
+\newcommand\bbP{\mathbb{P}}
+\renewcommand\P[1]{\mathbb{P}\brack{#1}}
+% expectation
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand\E[1]{\bbE\sbrack{#1}}
+\newcommand\EE[2]{\bbE_{#1}\sbrack{#2}}
+% variance
+\newcommand\V[1]{\mathrm{Var}\brack{#1}}
+
+% essential supremum
+\DeclareMathOperator*{\esssup}{ess\,sup}
+
+\title{LaTeX in VScode}
+\author{Kamran}
+
+\begin{document}
+    \maketitle
+    
+    You can write and compile LaTeX in VScode.
+
+    Geometric Brownian motion is the following SDE:
+    $$
+    \dd X_t = \mu X_t \dd t + \sigma X_t \dd B_t, \quad X_0 := x_0,
+    $$
+    which has unique solution
+    $$
+    X_t = x_0 \exp \brack{\brack{\mu - \frac{1}{2}\sigma^2}t + \sigma B_t}.
+    $$
+    Since $\exp\brack{\sigma B_t - \frac{1}{2}\sigma^2 t}$ is a martingale, $\E{X_t} = \E{x_0}\exp(\mu t)$.
+
+    \begin{figure}[!h]
+        \centering
+        \includegraphics[width=0.75\linewidth]{gbm.png}
+        \label{fig:gbm}
+    \end{figure}
+\end{document}
