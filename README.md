@@ -1,0 +1,1 @@
+# VS code showcase to the new students

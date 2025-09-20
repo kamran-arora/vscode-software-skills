@@ -5,6 +5,8 @@ import lineax as lx
 
 """
 Simulate geometric Brownian motion in Diffrax using Euler-Maruyama timestepping
+
+dX_t = mu * X_t dt + sigma * X_t dB_t
 """
 
 def _vf(t, y, args):
