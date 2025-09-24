@@ -1,5 +1,6 @@
-from functions import *
 import numpy as np
+
+from functions import *
 
 
 def test_add():

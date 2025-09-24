@@ -1,0 +1,21 @@
+import numpy as np
+import os, sys
+
+import matplotlib.pyplot as plt
+
+import diffrax as dfx
+
+
+def func(a,  b, c):
+    
+    return a, b**2, c **3
+
+def func2(argument1,argument2,argument3,argument4, argument5,argument6,argument7,argument8,argument9):
+    return None
+
+print (  'hello')
+
+x = np.linspace(0, 1, 100)
+solver    =dfx.Euler()
+
+plt.plot(x,x**2,marker="x",   linestyle="--")
