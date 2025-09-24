@@ -9,16 +9,20 @@ Simulate geometric Brownian motion in Diffrax using Euler-Maruyama timestepping
 dX_t = mu * X_t dt + sigma * X_t dB_t
 """
 
+
 def _vf(t, y, args):
     mu, sigma = args
-    return mu*y
+    return mu * y
+
 
 def _diffusion(t, y, args):
     mu, sigma = args
-    return lx.DiagonalLinearOperator(sigma*y)
+    return lx.DiagonalLinearOperator(sigma * y)
+
 
 def _get_terms(bm):
     return dfx.MultiTerm(dfx.ODETerm(_vf), dfx.ControlTerm(_diffusion, bm))
+
 
 def simulate_gbm(mu: float, sigma: float, T: float, dt0: float, y0: jax.Array, key):
     """
@@ -36,8 +40,8 @@ def simulate_gbm(mu: float, sigma: float, T: float, dt0: float, y0: jax.Array, k
     - Sample path of a GBM
     """
     args = (mu, sigma)
-    ts = jnp.linspace(0.0, T, int(T/dt0)+1)
-    saveat=dfx.SaveAt(ts=ts)
+    ts = jnp.linspace(0.0, T, int(T / dt0) + 1)
+    saveat = dfx.SaveAt(ts=ts)
     bm = dfx.UnsafeBrownianPath(shape=(1,), key=key)
     terms = _get_terms(bm)
     sol = dfx.diffeqsolve(
@@ -53,6 +57,7 @@ def simulate_gbm(mu: float, sigma: float, T: float, dt0: float, y0: jax.Array, k
     )
     return sol
 
+
 multi_simulate_gbm = jax.vmap(
     simulate_gbm,
     in_axes=(
@@ -62,5 +67,5 @@ multi_simulate_gbm = jax.vmap(
         None,
         None,
         0,
-    )
+    ),
 )
